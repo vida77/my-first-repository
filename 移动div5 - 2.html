@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+* { margin:0; padding:0; }
+#box { position:relative; width:400px; height:400px; background:#399; margin:50px auto; }
+#div1 { position:absolute; width:150px; height:150px; background:#ff0;
+	text-align:center; font-size:20px; line-height:40px; font-size:35px; color:yellow;
+}
+</style>
+<script>
+window.onload=function (){
+	var oBox=document.getElementById('box');
+	var oDiv=document.getElementById('div1');
+	var nMaxLeft=oBox.offsetWidth-oDiv.offsetWidth;
+	var nMaxTop=oBox.offsetHeight-oDiv.offsetHeight;
+	
+	oBox.onmousemove=function (ev){
+		var oEvent=ev || event;
+		
+		var left=oEvent.clientX-oBox.offsetLeft-oDiv.offsetWidth/2;
+		var top=oEvent.clientY-oBox.offsetTop-oDiv.offsetHeight/2;
+		
+		if (left < 0)
+		{
+			left=0;
+		}
+		else if (left > nMaxLeft)
+		{
+			left=nMaxLeft;
+		}
+		
+		if (top < 0)
+		{
+			top=0;
+		}
+		else if (top > nMaxTop)
+		{
+			top=nMaxTop;
+		}
+		
+		oDiv.style.left=left+'px';
+		oDiv.style.top=top+'px';
+
+		oDiv.innerHTML='top:'+top+'<br />left:'+left;
+	};
+};
+</script>
+</head>
+
+<body>
+	<div id="box">
+		<div id="div1"></div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
